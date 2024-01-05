@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>PDF QR Code Generator</title>
+        <!-- Include the QR Code library -->
+        <script src="https://cdn.rawgit.com/davidshimjs/qrcodejs/gh-pages/qrcode.min.js"></script>
+        <!-- Include the html2canvas library -->
+        <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
+        <style>
+            body {
+                font-family: 'Arial', sans-serif;
+                background-color: #f8f9fa;
+                margin: 0;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                height: 100vh;
+            }
+
+            h1 {
+                color: #007bff;
+            }
+
+            /* Style the card */
+            .card {
+                display: none;
+                border: 1px solid #dee2e6;
+                padding: 20px;
+                text-align: center;
+                max-width: 300px;
+                background-color: #ffffff;
+                border-radius: 10px;
+                box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            }
+
+            /* Style the QR code container */
+            #qrcodePDF {
+                position: relative;
+                margin-bottom: 20px;
+            }
+
+            /* Style the logo */
+            #logo {
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                max-width: 50px;
+                /* Adjust as needed */
+                max-height: 50px;
+                /* Adjust as needed */
+            }
+
+            p {
+                color: #007bff;
+                margin-top: 10px;
+            }
+        </style>
+    </head>
+
+    <body>
+
+        <h1>PDF QR Code Generator</h1>
+
+        <!-- Form for PDF file details -->
+        <form id="pdfForm">
+            <label for="pdfFileName">PDF File Name:</label>
+            <input type="file" id="pdfFileName" required>
+
+            <!-- Color pickers for QR code and background colors -->
+            <label for="qrCodeColor">QR Code Color:</label>
+            <input type="color" id="qrCodeColor" value="#3498db">
+
+            <label for="backgroundColor">Background Color:</label>
+            <input type="color" id="backgroundColor" value="#ffffff">
+
+            <!-- Button to generate QR code -->
+            <button type="button" onclick="generatePDFQRCode()">Generate QR Code</button>
+
+            <!-- Download button for QR code -->
+            <button type="button" onclick="downloadQRCodeImage()" id="downloadButton" disabled>Download QR Code</button>
+        </form>
+
+        <!-- Card to display QR code, logo, and additional information -->
+        <div class="card" id="qrCodeCard">
+            <!-- Container for displaying the QR code -->
+            <div id="qrcodePDF">
+                <img id="logo" src="favi.png" alt="Logo">
+            </div>
+
+            <!-- Additional information below the QR code -->
+            <p id="nameLabel">Omprakash</p>
+        </div>
+
+        <script>
+            function generatePDFQRCode() {
+                // Get PDF file name from the form field
+                var pdfFileName = document.getElementById("pdfFileName").value;
+
+                // Get color values from the color pickers
+                var qrCodeColor = document.getElementById("qrCodeColor").value;
+                var backgroundColor = document.getElementById("backgroundColor").value;
+
+                // Construct the file link
+                // var fileLink = "file:///path/to/pdf/files/" + encodeURIComponent(pdfFileName) + ".pdf";
+                var objectURL = URL.createObjectURL(pdfFileName);
+                var fileLink = "file://" + objectURL;
+                console.log(objectURL);
+                console.log(fileLink);
+
+                // Create a QR Code with customized options
+                var qrcode = new QRCode(document.getElementById("qrcodePDF"), {
+                    text: fileLink,
+                    width: 150,
+                    height: 150,
+                    colorDark: qrCodeColor, // Custom QR code color
+                    colorLight: backgroundColor, // Custom background color
+                });
+
+                // Set the color of the card background
+                document.querySelector('#qrCodeCard').style.backgroundColor = backgroundColor;
+
+                // Set the color of the additional information labels
+                document.getElementById('nameLabel').style.color = qrCodeColor;
+
+                // Show the QR code card and enable the download button
+                document.getElementById('qrCodeCard').style.display = 'block';
+                document.getElementById('downloadButton').disabled = false;
+            }
+
+            function downloadQRCodeImage() {
+                // Use html2canvas to convert HTML content to an image
+                html2canvas(document.getElementById("qrCodeCard")).then(function (canvas) {
+                    // Convert canvas to data URL
+                    var dataUrl = canvas.toDataURL("image/png");
+
+                    // Create a temporary anchor element
+                    var anchor = document.createElement("a");
+                    anchor.href = dataUrl;
+                    anchor.download = "qrcode_image.png";
+
+                    // Trigger a click on the anchor to start the download
+                    anchor.click();
+                });
+            }
+        </script>
+
+    </body>
+
+</html>

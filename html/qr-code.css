@@ -103,7 +103,7 @@ section{
 .VCard {
   display: none;
   border: 1px solid #dee2e6;
-  /* padding: 25px; */
+  padding: 25px;
   max-height:max-content;
   text-align: center;
   padding-bottom: 0%;
@@ -132,7 +132,7 @@ section{
 /* media query for arrange logo center to qr code  */
 @media only screen and (max-width: 500px) {
   #logoVCard {
-    top: 77%;
+    top: 80%;
     left: 50% !important;
 
   }

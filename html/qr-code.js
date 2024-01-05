@@ -379,8 +379,14 @@ function downloadEmailQRCode(e) {
 
 // vcard QR Code generating code using ajax ********************************************************************
 function generatevcardQRCode() {
+  if (isQRCodeGenerated) {
+    // Clear the existing QR code
+    document.getElementById("qrcodeVcard").innerHTML = '';
+  }
   event.preventDefault();
   var form_data = new FormData(document.getElementById("frmQRCode"));
+  var qrCodeColorVcard = document.getElementById("qrCodeColorVcard").value;
+  var backgroundColorVcard = document.getElementById("backgroundColorVcard").value;
 
   var xhttp = new XMLHttpRequest();
   xhttp.open("POST", "generateVcardQRCode.php", true);
@@ -389,10 +395,16 @@ function generatevcardQRCode() {
           try {
               var responseObj = JSON.parse(this.response);
               if ('success' == responseObj.code) {
-                  document.querySelector('#qrcodeVcard').innerHTML = responseObj.content;
-                  // var data = document.getElementById('vcardData').value = responseObj.vcard;
-                  // console.log(data);
-                  document.querySelector("#qrVCard").style.display = "block";
+
+                  var qr = new QRCode(document.querySelector('#qrcodeVcard'), {
+                    text: responseObj.vcard,
+                    width: 300,
+                    height: 300,
+                    colorDark: qrCodeColorVcard,
+                    colorLight: backgroundColorVcard,
+                    scale: 4,
+                  });
+
                   var fileInput = document.getElementById('fileVCard');
                   var file = fileInput.files[0];
 
@@ -400,14 +412,12 @@ function generatevcardQRCode() {
                       var logo = document.createElement('img');
                       logo.id = 'logoVCard';
                       logo.alt = 'logo';
+                      logo.accept = 'image/*' 
 
                       logo.style.height = '50px';
                       logo.style.background = 'white';
                       logo.style.width = '50px';
                       logo.style.borderRadius = '50%';
-                      logo.style.display = 'flex';
-                      logo.style.alignItems = 'center';
-                      logo.style.textAlign = 'center';
 
                       // Create a URL for the selected file
                       var objectURL = URL.createObjectURL(file);
@@ -417,6 +427,11 @@ function generatevcardQRCode() {
                       var qrcodeSMSElement = document.getElementById('qrcodeVcard');
                       qrcodeSMSElement.appendChild(logo);
                   }
+
+                  document.getElementById('qrcodeVcard').style.backgroundColor = backgroundColorVcard;
+                  document.getElementById('nameLabelVCard').style.color = qrCodeColorVcard;
+
+                  document.querySelector("#qrVCard").style.display = "block";
               } else {
                   alert(responseObj.content);
               }
@@ -428,38 +443,10 @@ function generatevcardQRCode() {
       }
   }
   xhttp.send(form_data);
+  isQRCodeGenerated =true;
 }
 
-//QR download function added by me***************************************************************
-
-// function downloadQRCode() {
-//   // Select the container div that holds the QR code image
-//   var qrcodeContainer = document.getElementById('qrVCard');
-//   console.log(qrcodeContainer);
-
-//   // Check if the container has an image child
-//   var img = qrcodeContainer.querySelector('img');
-//   console.log(img);
-
-//   // if (img) {
-//       var link = document.createElement('a');
-//       link.download = 'qrcode.png';
-
-//       // Create a canvas, draw the image on it, and convert to data URL
-//       var canvas = document.createElement('canvas');
-//       canvas.width = img.width;
-//       canvas.height = img.height;
-//       canvas.getContext('2d').drawImage(img, 0, 0, img.width, img.height);
-//       link.href = canvas.toDataURL('image/png');
-
-//       document.body.appendChild(link);
-//       link.click();
-//       document.body.removeChild(link);
-//       delete link;
-//   // } else {
-//   //     alert('Generate a QR code first before downloading.');
-//   // }
-// }
+//QR download  vcard ***************************************************************
 
 function downloadQRCode(e) {
   console.log(e.title);

@@ -428,6 +428,7 @@ function generatevcardQRCode() {
                   document.getElementById('nameLabelVCard').style.color = qrCodeColorVcard;
 
                   document.querySelector("#qrVCard").style.display = "block";
+                  isQRCodeGenerated =true;
               } else {
                   alert(responseObj.content);
               }
@@ -439,7 +440,7 @@ function generatevcardQRCode() {
       }
   }
   xhttp.send(form_data);
-  isQRCodeGenerated =true;
+
 }
 
 //QR download  vcard ***************************************************************

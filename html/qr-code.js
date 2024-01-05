@@ -118,8 +118,8 @@ function generatePhoneQRCode() {
         text: telLink,
         width: 300,
         height: 300,
-        colorDark: qrCodeColorcall, // Custom QR code color
-        colorLight: backgroundColorcall, // Custom background color
+        colorDark: qrCodeColorcall,
+        colorLight: backgroundColorcall,
     });
     var fileInput = document.getElementById('fileCall');
     var file = fileInput.files[0];
@@ -250,9 +250,6 @@ function downloadQRCodeurl(e) {
   console.log(e.title);
   var title = e.title;
   var qrCodeCard = document.getElementById("qr-containerurl");
-  // var hasQRCodeImage = qrCodeCard && qrCodeCard.querySelector('img');
-
-  // if (hasQRCodeImage) {
 
   switch(title){
     case "jpg":
@@ -282,8 +279,6 @@ function downloadQRCodeurl(e) {
     default:
       console.log("Not a valid option");
   }
-
-// }
 }
 
 // for generating mail QR Code *****************************************************************
@@ -346,10 +341,11 @@ function generateEmailQRCode() {
 function downloadEmailQRCode(e) {
   console.log(e.title);
   var title = e.title;
-  var qrCodeCard = document.getElementById("qrCodeCardemail");
+  var qrCodeEmail = document.getElementById("qrCodeCardemail");
+  console.log(qrCodeEmail);
   switch(title){
     case "jpg":
-      domtoimage.toJpeg(qrCodeCard).then(function (dataUrl) {
+      domtoimage.toJpeg(qrCodeEmail).then(function (dataUrl) {
           var link = document.createElement("a");
           link.download = "email_qrcode.jpg";
           link.href = dataUrl;
@@ -357,7 +353,7 @@ function downloadEmailQRCode(e) {
         });
     break;
     case "png":
-      domtoimage.toPng(qrCodeCard).then(function (dataUrl) {
+      domtoimage.toPng(qrCodeEmail).then(function (dataUrl) {
         var link = document.createElement("a");
         link.download = "email_qrcode.png";
         link.href = dataUrl;
@@ -365,7 +361,7 @@ function downloadEmailQRCode(e) {
       });
     break;
     case "svg":
-      domtoimage.toSvg(qrCodeCard).then(function (dataUrl) {
+      domtoimage.toSvg(qrCodeEmail).then(function (dataUrl) {
         var link = document.createElement("a");
         link.download = "email_qrcode.svg";
         link.href = dataUrl;
@@ -379,8 +375,14 @@ function downloadEmailQRCode(e) {
 
 // vcard QR Code generating code using ajax ********************************************************************
 function generatevcardQRCode() {
+  if (isQRCodeGenerated) {
+    // Clear the existing QR code
+    document.getElementById("qrcodeVcard").innerHTML = '';
+  }
   event.preventDefault();
   var form_data = new FormData(document.getElementById("frmQRCode"));
+  var qrCodeColorVcard = document.getElementById("qrCodeColorVcard").value;
+  var backgroundColorVcard = document.getElementById("backgroundColorVcard").value;
 
   var xhttp = new XMLHttpRequest();
   xhttp.open("POST", "generateVcardQRCode.php", true);
@@ -389,10 +391,16 @@ function generatevcardQRCode() {
           try {
               var responseObj = JSON.parse(this.response);
               if ('success' == responseObj.code) {
-                  document.querySelector('#qrcodeVcard').innerHTML = responseObj.content;
-                  // var data = document.getElementById('vcardData').value = responseObj.vcard;
-                  // console.log(data);
-                  document.querySelector("#qrVCard").style.display = "block";
+
+                  var qr = new QRCode(document.querySelector('#qrcodeVcard'), {
+                    text: responseObj.vcard,
+                    width: 300,
+                    height: 300,
+                    colorDark: qrCodeColorVcard,
+                    colorLight: backgroundColorVcard,
+                    scale: 4,
+                  });
+
                   var fileInput = document.getElementById('fileVCard');
                   var file = fileInput.files[0];
 
@@ -400,14 +408,12 @@ function generatevcardQRCode() {
                       var logo = document.createElement('img');
                       logo.id = 'logoVCard';
                       logo.alt = 'logo';
+                      logo.accept = 'image/*'
 
                       logo.style.height = '50px';
                       logo.style.background = 'white';
                       logo.style.width = '50px';
                       logo.style.borderRadius = '50%';
-                      logo.style.display = 'flex';
-                      logo.style.alignItems = 'center';
-                      logo.style.textAlign = 'center';
 
                       // Create a URL for the selected file
                       var objectURL = URL.createObjectURL(file);
@@ -417,6 +423,11 @@ function generatevcardQRCode() {
                       var qrcodeSMSElement = document.getElementById('qrcodeVcard');
                       qrcodeSMSElement.appendChild(logo);
                   }
+
+                  document.getElementById('qrcodeVcard').style.backgroundColor = backgroundColorVcard;
+                  document.getElementById('nameLabelVCard').style.color = qrCodeColorVcard;
+
+                  document.querySelector("#qrVCard").style.display = "block";
               } else {
                   alert(responseObj.content);
               }
@@ -428,43 +439,16 @@ function generatevcardQRCode() {
       }
   }
   xhttp.send(form_data);
+  isQRCodeGenerated =true;
 }
 
-//QR download function added by me***************************************************************
-
-// function downloadQRCode() {
-//   // Select the container div that holds the QR code image
-//   var qrcodeContainer = document.getElementById('qrVCard');
-//   console.log(qrcodeContainer);
-
-//   // Check if the container has an image child
-//   var img = qrcodeContainer.querySelector('img');
-//   console.log(img);
-
-//   // if (img) {
-//       var link = document.createElement('a');
-//       link.download = 'qrcode.png';
-
-//       // Create a canvas, draw the image on it, and convert to data URL
-//       var canvas = document.createElement('canvas');
-//       canvas.width = img.width;
-//       canvas.height = img.height;
-//       canvas.getContext('2d').drawImage(img, 0, 0, img.width, img.height);
-//       link.href = canvas.toDataURL('image/png');
-
-//       document.body.appendChild(link);
-//       link.click();
-//       document.body.removeChild(link);
-//       delete link;
-//   // } else {
-//   //     alert('Generate a QR code first before downloading.');
-//   // }
-// }
+//QR download  vcard ***************************************************************
 
 function downloadQRCode(e) {
   console.log(e.title);
   var title = e.title;
   var qrCodeCard = document.getElementById("qrVCard");
+  console.log(qrCodeCard);
   switch(title){
     case "jpg":
       domtoimage.toJpeg(qrCodeCard).then(function (dataUrl) {
@@ -495,58 +479,7 @@ function downloadQRCode(e) {
   }
 }
 
-
-// function downloadQRCode() {
-//   // Select the container div that holds the content
-//   var container = document.getElementById('qrVCard');
-
-//   // Use html2canvas to capture the content as an image with a higher scale
-//   html2canvas(container, { scale: 3 }).then(function (canvas) {
-//       // Create a new image element with the captured data
-//       var img = new Image();
-//       img.src = canvas.toDataURL('image/png');
-
-//       // Create a download link
-//       var link = document.createElement('a');
-//       link.href = img.src;
-//       link.download = 'container_image.png';
-
-//       // Append the link to the document and trigger a click
-//       document.body.appendChild(link);
-//       link.click();
-
-//       // Remove the link and image elements from the document
-//       document.body.removeChild(link);
-//       document.body.removeChild(img);
-//   });
-// }
-
-
-
-
-// function downloadQRCode() {
-//   var container = document.getElementById('qrVCard');
-//   console.log(container);
-//   setTimeout(function () {
-//       html2canvas(container).then(function (canvas) {
-//           var imageData = canvas.toDataURL("image/svg+xml");
-//           var link = document.createElement('a');
-//           link.href = imageData;
-//           link.download = 'email_qr_code.svg';
-//           document.body.appendChild(link);
-//           link.click();
-//           document.body.removeChild(link);
-//       });
-//   }, 500); // Adjust the delay as needed
-// }
-
-
-// function generatePdfQRCode(){
-//   console.log("click to submit button");
-//   var inputFile = document.getElementById("filePdf");
-//   console.log(inputFile.value);
-// }
-
+// generate pdf QR Code ***************************************************************************
 function generatePdfQRCode() {
   if (isQRCodeGenerated) {
     // Clear the existing QR code
@@ -603,12 +536,12 @@ console.log(pdfFileLink);
 
 
 function downloadQRCodePdf(e) {
-  console.log(e.title);
   var title = e.title;
-  var qrCodeCard = document.getElementById("qrCodeCardPdf");
+  var qrCodePdf = document.getElementById("qrCodeCardPdf");
+
   switch(title){
     case "jpg":
-      domtoimage.toJpeg(qrCodeCard).then(function (dataUrl) {
+      domtoimage.toJpeg(qrCodePdf).then(function (dataUrl) {
           var link = document.createElement("a");
           link.download = "pdf_qrcode.jpg";
           link.href = dataUrl;
@@ -616,7 +549,7 @@ function downloadQRCodePdf(e) {
         });
     break;
     case "png":
-      domtoimage.toPng(qrCodeCard).then(function (dataUrl) {
+      domtoimage.toPng(qrCodePdf).then(function (dataUrl) {
         var link = document.createElement("a");
         link.download = "pdf_qrcode.png";
         link.href = dataUrl;
@@ -624,7 +557,7 @@ function downloadQRCodePdf(e) {
       });
     break;
     case "svg":
-      domtoimage.toSvg(qrCodeCard).then(function (dataUrl) {
+      domtoimage.toSvg(qrCodePdf).then(function (dataUrl) {
         var link = document.createElement("a");
         link.download = "pdf_qrcode.svg";
         link.href = dataUrl;

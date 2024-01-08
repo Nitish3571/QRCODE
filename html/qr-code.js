@@ -242,6 +242,7 @@ function generateQRCodeurl() {
     document.getElementById('downloadButtonurl').disabled = false;
 
     isQRCodeGenerated = true;
+    console.log(isQRCodeGenerated);
 }
 
 // download QR Code for URL***************

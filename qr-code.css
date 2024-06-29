@@ -100,7 +100,7 @@ section{
 }
 
 /* v card  ***************************************************************************/
-.VCard {
+#qrVCard {
   display: none;
   border: 1px solid #dee2e6;
   padding: 25px;
@@ -114,6 +114,10 @@ section{
 }
 
 /* Style the QR code container */
+#qrCodeVCard img{
+  display: inline-block !important;
+  }
+
 #qrCodeVCard {
   position: relative;
   margin-bottom: 10px;
@@ -134,7 +138,6 @@ section{
   #logoVCard {
     top: 80%;
     left: 50% !important;
-
   }
 }
 @media only screen and (min-width: 500px) and (max-width: 992px) {

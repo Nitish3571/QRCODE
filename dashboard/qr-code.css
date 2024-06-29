@@ -1,0 +1,377 @@
+
+.fa{
+  cursor: pointer !important;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 500;
+}
+
+/* Style for message *************************************************************/
+.cardsms {
+    display: none;
+    border: 1px solid #dee2e6;
+    padding: 25px;
+    max-height:max-content;
+    text-align: center;
+    padding-bottom: 0%;
+    max-width: 350px;
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+#qrcodeSMS img{
+  display: inline-block !important;
+}
+
+section{
+  margin: 0;
+  padding: 0 !important;
+}
+/* Style the QR code container */
+#qrcodeSMS {
+    position: relative;
+    margin-bottom: 10px;
+}
+
+/* Style the logo */
+#logosms {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    max-width: 50px;
+    /* Adjust as needed */
+    max-height: 50px;
+    /* Adjust as needed */
+}
+
+#nameLabelsms {
+    color: #007bff;
+    margin-top: 20px;
+    font-weight: bold;
+    font-size:x-large;
+}
+
+/* Style for pdf *************************************************************/
+.qrCodeCardPdf {
+    display: none;
+    border: 1px solid #dee2e6;
+    padding: 25px;
+    max-height:max-content;
+    text-align: center;
+    padding-bottom: 0%;
+    max-width: 350px;
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+#qrcodePdf img{
+  display: inline-block !important;
+}
+
+section{
+  margin: 0;
+  padding: 0 !important;
+}
+/* Style the QR code container */
+#qrcodePdf {
+    position: relative;
+    margin-bottom: 10px;
+}
+
+/* Style the logo */
+#logopdf {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    max-width: 50px;
+    /* Adjust as needed */
+    max-height: 50px;
+    /* Adjust as needed */
+}
+
+#nameLabelpdf {
+    color: #007bff;
+    margin-top: 20px;
+    font-weight: bold;
+    font-size:x-large;
+}
+
+/* v card  ***************************************************************************/
+#qrVCard {
+  display: none;
+  border: 1px solid #dee2e6;
+  padding: 25px;
+  max-height:max-content;
+  text-align: center;
+  padding-bottom: 0%;
+  max-width: 350px;
+  background-color: #ffffff;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Style the QR code container */
+#qrCodeVCard img{
+  display: inline-block !important;
+  }
+
+#qrCodeVCard {
+  position: relative;
+  margin-bottom: 10px;
+}
+
+/* Style the logo */
+#logoVCard {
+  position: absolute;
+  top: 40%;
+  left: 66%;
+  transform: translate(-50%, -50%);
+  max-width: 50px;
+  max-height: 50px;
+}
+
+/* media query for arrange logo center to qr code  */
+@media only screen and (max-width: 500px) {
+  #logoVCard {
+    top: 80%;
+    left: 50% !important;
+  }
+}
+@media only screen and (min-width: 500px) and (max-width: 992px) {
+  #logoVCard {
+    top: 77%;
+    left: 26% !important;
+
+  }
+}
+@media only screen and (min-width: 993px) and (max-width: 1190px) {
+  #logoVCard {
+    top: 77%;
+    left: 20% !important;
+
+  }
+}
+#nameLabelVCard {
+  color: #007bff;
+  margin-top: 20px;
+  font-weight: bold;
+  font-size:x-large;
+}
+
+
+/* styling for url**************************************************************************/
+#qr-containerurl {
+    display: none;
+    border: 1px solid #dee2e6;
+    padding: 25px;
+    max-height:max-content;
+    text-align: center;
+    padding-bottom: 0%;
+    max-width: 350px;
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+#qr-codeurl img{
+display: inline-block !important;
+}
+
+/* Style the QR code container */
+#qr-codeurl {
+  position: relative;
+  margin-bottom: 10px;
+}
+
+/* Style the logo */
+#logourl {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  max-width: 50px;
+  /* Adjust as needed */
+  max-height: 50px;
+  /* Adjust as needed */
+}
+
+#nameLabelurl {
+  color: #007bff;
+  margin-top: 20px;
+  font-weight: bold;
+  font-size:x-large;
+}
+
+/* styling for email**************************************************************************/
+#qrCodeCardemail {
+    display: none;
+    border: 1px solid #dee2e6;
+    padding: 25px;
+    max-height:max-content;
+    text-align: center;
+    padding-bottom: 0%;
+    max-width: 350px;
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+#qr-codeemail img{
+display: inline-block !important;
+}
+
+/* Style the QR code container */
+#qr-codeemail {
+  position: relative;
+  margin-bottom: 10px;
+}
+
+/* Style the logo */
+#logoemail {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  max-width: 50px;
+  /* Adjust as needed */
+  max-height: 50px;
+  /* Adjust as needed */
+}
+
+#nameLabelEmail {
+  color: #007bff;
+  margin-top: 20px;
+  font-weight: bold;
+  font-size:x-large;
+}
+
+/* email css*************************************************************************************************************/
+  /* #qr-containeremail {
+      display: none;
+      margin-top: 20px;
+      position: relative;
+      display: inline-block;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      opacity: 0;
+      transition: opacity 0.5s ease-in-out;
+  }
+
+  #qr-containeremail.show {
+      opacity: 1;
+  }
+
+  #qr-codeemail {
+      max-width: 100%;
+      opacity: 0;
+      transition: opacity 0.5s ease-in-out;
+  }
+
+  #qr-codeemail.show {
+      opacity: 1;
+  }
+
+  #logoemail {
+      position: absolute;
+      top: 45%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      max-width: 30%;
+      z-index: 1;
+  }
+
+  #qr-nameemail {
+      font-size: 20px;
+      color: #007bff;
+      margin-top: 10px;
+  }
+
+  #qr-containeremail {
+    display: none;
+    border: 1px solid #dee2e6;
+    padding: 25px;
+    max-height:max-content;
+    text-align: center;
+    padding-bottom: 0%;
+    max-width: 350px;
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+#qr-codeemail img{
+display: inline-block !important;
+}
+
+/* Style the QR code container */
+#qr-codeemail {
+  position: relative;
+  margin-bottom: 10px;
+}
+
+/* Style the logo */
+#logoemail {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  max-width: 50px;
+  /* Adjust as needed */
+  max-height: 50px;
+  /* Adjust as needed */
+}
+
+#nameLabelEmail {
+  color: #007bff;
+  margin-top: 20px;
+  font-weight: bold;
+  font-size:x-large;
+}
+
+/* call css*************************************************************************************************************/
+#qrCodeCardcall {
+  display: none;
+  border: 1px solid #dee2e6;
+  padding: 25px;
+  max-height:max-content;
+  text-align: center;
+  padding-bottom: 0%;
+  max-width: 350px;
+  background-color: #ffffff;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+#qrcodePhonecall img{
+display: inline-block !important;
+}
+
+/* Style the QR code container */
+#qrcodePhonecall {
+  position: relative;
+  margin-bottom: 10px;
+}
+
+/* Style the logo */
+#logocall {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  max-width: 50px;
+  /* Adjust as needed */
+  max-height: 50px;
+  /* Adjust as needed */
+}
+
+#nameLabelcall {
+  color: #007bff;
+  margin-top: 20px;
+  font-weight: bold;
+  font-size:x-large;
+}

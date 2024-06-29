@@ -8,7 +8,7 @@
         <meta name="viewport"
             content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0" />
 
-        <title>QR CODE GENERATOR | WEBNX </title>
+        <title>QR CODE GENERATOR | CodeRunner </title>
 
         <meta name="description" content="" />
 
@@ -19,7 +19,7 @@
             integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
             crossorigin="anonymous" referrerpolicy="no-referrer" />
 
-        <!-- Fonts -->
+         <!-- Fonts -->
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
         <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,400;0,500;1,400&display=swap"
@@ -80,7 +80,7 @@
                 <aside id="layout-menu" class="layout-menu menu-vertical menu bg-menu-theme">
                     <div class="app-brand demo">
                         <a href="#" class="app-brand-link">
-                          <span class="app-brand-text menu-text fw-bold ms-2 fs-2"> WebNX</span>
+                          <span class="app-brand-text menu-text fw-bold ms-2 fs-2"> CodeRunner</span>
                         </a>
 
                         <a href="javascript:void(0);"
@@ -114,14 +114,14 @@
                             </a>
                             <ul class="menu-sub">
                                 <li class="menu-item">
-                                    <a href="pages-account-settings-account.html" class="menu-link">
-                                        <div data-i18n="Account">Account</div>
-                                    </a>
+                                    <!-- <a href="pages-account-settings-account.html" class="menu-link"> -->
+                                        <div data-i18n="Account" class="menu-link">Account</div>
+                                    <!-- </a> -->
                                 </li>
                                 <li class="menu-item">
-                                    <a href="pages-account-settings-notifications.html" class="menu-link">
-                                        <div data-i18n="Notifications">Notifications</div>
-                                    </a>
+                                    <!-- <a href="pages-account-settings-notifications.html" class="menu-link"> -->
+                                        <div data-i18n="Notifications" class="menu-link">Notifications</div>
+                                    <!-- </a> -->
                                 </li>
 
                             </ul>
@@ -133,9 +133,9 @@
                             </a>
                             <ul class="menu-sub">
                                 <li class="menu-item">
-                                    <a href="auth-forgot-password-basic.html" class="menu-link" target="_blank">
-                                        <div data-i18n="Basic">Forgot Password</div>
-                                    </a>
+                                    <!-- <a href="auth-forgot-password-basic.html" class="menu-link" target="_blank"> -->
+                                        <div data-i18n="Basic" class="menu-link">Forgot Password</div>
+                                    <!-- </a> -->
                                 </li>
                             </ul>
                         </li>
@@ -143,13 +143,13 @@
                         <!-- Misc -->
                         <li class="menu-header small text-uppercase"><span class="menu-header-text">Misc</span></li>
                         <li class="menu-item">
-                            <a href="" target="_blank" class="menu-link">
+                            <a href="#" target="_blank" class="menu-link">
                                 <i class="menu-icon tf-icons bx bx-support"></i>
                                 <div data-i18n="Support">Support</div>
                             </a>
                         </li>
                         <li class="menu-item">
-                            <a href="" target="_blank" class="menu-link">
+                            <a href="#" target="_blank" class="menu-link">
                                 <i class="menu-icon tf-icons bx bx-file"></i>
                                 <div data-i18n="Documentation">Documentation</div>
                             </a>
@@ -325,7 +325,7 @@
                                         <div class="card-body">
                                             <div class="row">
                                                 <div class="col-12 col-xl-6">
-                                                    <form id="emailForm1">
+                                                    <form id="emailForm1" action="#">
                                                         <div class="mb-3">
                                                             <label class="form-label" for="to">Email</label>
                                                             <div class="input-group input-group-merge">
@@ -418,7 +418,7 @@
 
                                                             <div id="qr-codeemail"></div>
                                                             <!-- <img id="logoemail" alt="Logo"> -->
-                                                            <p id="nameLabelEmail">WebNX</p>
+                                                            <p id="nameLabelEmail">CodeRunner</p>
                                                         <!-- </div> -->
                                                     </div>
                                                     <!-- <button type="submit" class="btn btn-primary" id="downloadBtn" onclick="downloadQRCode()"
@@ -438,7 +438,7 @@
                                             <small class="text-muted float-end">QR Code Generator from Url</small>
                                         </div>
                                         <div class="card-body">
-                                          <form id="urlForm1">
+                                          <form id="urlForm1" action="#">
                                               <div class="row">
                                                   <div class="col-12 col-xl-6">
                                                       <div class="mb-3">
@@ -519,7 +519,7 @@
                                                           <div id="qr-codeurl">
                                                               <!-- <img src="favi.png" id="logourl" alt="logo"> -->
                                                           </div>
-                                                          <p id="nameLabelurl">WebNX</p>
+                                                          <p id="nameLabelurl">CodeRunner</p>
                                                       </div>
                                                 </div>
                                               </div>
@@ -539,7 +539,7 @@
                                         <div class="card-body">
                                             <div class="row">
                                                 <div class="col-12 col-xl-6">
-                                                    <form id="phoneForm">
+                                                    <form id="phoneForm" action="#">
                                                         <div class="mb-3">
                                                             <label class="form-label" for="phoneNumbercall">Enter
                                                                 Number</label>
@@ -622,7 +622,7 @@
                                                         <div id="qrcodePhonecall">
                                                             <!-- <img id="logocall" src="favi.png" alt="Logo"> -->
                                                         </div>
-                                                        <p id="nameLabelcall">WebNX</p>
+                                                        <p id="nameLabelcall">CodeRunner</p>
                                                     </div>
                                                 </div>
                                             </div>
@@ -686,7 +686,7 @@
                                                     </div>
 
                                                     <!-- Additional information below the QR code -->
-                                                    <p id="nameLabelpdf"> WebNX</p>
+                                                    <p id="nameLabelpdf"> CodeRunner</p>
                                                 </div>
                                             </div>
                                         <!-- </div> -->
@@ -705,7 +705,7 @@
                                         <div class="card-body">
                                             <div class="row">
                                                 <div class="col-12 col-xl-6">
-                                                    <form id="smsForm">
+                                                    <form id="smsForm" action="#">
                                                         <div class="mb-3">
                                                             <label class="form-label" for="phoneNumbersms">Phone
                                                                 No</label>
@@ -800,7 +800,7 @@
                                                         </div>
 
                                                         <!-- Additional information below the QR code -->
-                                                        <p id="nameLabelsms">WebNX</p>
+                                                        <p id="nameLabelsms">CodeRunner</p>
                                                     </div>
                                                 </div>
                                             </div>
@@ -816,7 +816,7 @@
                                             <small class="text-muted float-end">QR Generator for vCard</small>
                                         </div>
                                         <div class="card-body">
-                                            <form method="post" id="frmQRCode"
+                                            <form id="frmQRCode" action="#"
                                                 onsubmit="generatevcardQRCode();return false;" enctype="multipart/form-data">
                                                 <div class="row">
                                                     <div class="col-12 col-xl-6">
@@ -827,7 +827,7 @@
                                                                         for="basic-default-fullname">First
                                                                         Name</label>
                                                                     <input type="text" class="form-control"
-                                                                        id="basic-default-firstlname" name="firstname"
+                                                                        id="firstName" name="firstname"
                                                                         placeholder=" FirstName" required/>
                                                                 </div>
                                                             </div>
@@ -837,7 +837,7 @@
                                                                         for="basic-default-fullname">Last
                                                                         Name</label>
                                                                     <input type="text" class="form-control"
-                                                                        id="basic-default-lastname" name="lastname"
+                                                                        id="lastName" name="lastname"
                                                                         placeholder=" LastName" />
                                                                 </div>
                                                             </div>
@@ -845,7 +845,7 @@
                                                         <div class="mb-3">
                                                             <label class="form-label" for="">Email</label>
                                                             <div class="input-group input-group-merge">
-                                                                <input type="email" id="basic-default-mail"
+                                                                <input type="email" id="email"
                                                                     class="form-control" placeholder="john.doe"
                                                                     aria-label="john.doe" aria-describedby="2"
                                                                     name="email" required/>
@@ -858,7 +858,7 @@
                                                                 <div class="mb-3">
                                                                     <label class="form-label" for="">Phone
                                                                         No</label>
-                                                                    <input type="number" class="form-control phone-mask"
+                                                                    <input type="number" class="form-control phone-mask" id="phone"
                                                                         placeholder="658 799 8941" name="phone" />
                                                                 </div>
                                                             </div>
@@ -866,7 +866,7 @@
                                                                 <div class="mb-3">
                                                                     <label class="form-label" for="">Website</label>
                                                                     <input type="text" class="form-control phone-mask"
-                                                                        placeholder="www.example.com" name="website" />
+                                                                        placeholder="www.example.com" name="website" id="website" />
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -877,16 +877,15 @@
                                                                 <div class="mb-3">
                                                                     <label class="form-label" for="">Company
                                                                         Name</label>
-                                                                    <input type="text" class="form-control" id=""
+                                                                    <input type="text" class="form-control" id="companyName"
                                                                         placeholder="Company Name" name="company" />
                                                                 </div>
                                                             </div>
                                                             <div class="col-6">
                                                                 <div class="mb-3">
-                                                                    <label class="form-label" for="">Job
-                                                                        Title</label>
+                                                                    <label class="form-label" for="">Designation</label>
                                                                     <input type="text" class="form-control"
-                                                                        placeholder="Job Title" name="designation" />
+                                                                        placeholder="Job Title" name="designation"  id="designation"/>
                                                                 </div>
                                                             </div>
                                                             <label class="text-muted float " for="">Address
@@ -894,7 +893,7 @@
                                                             <div class="mb-3">
                                                                 <label class="form-label" for="">Address</label>
                                                                 <input type="text" class="form-control"
-                                                                    placeholder="Full Address" name="address" />
+                                                                    placeholder="Full Address" name="address" id="address" />
                                                             </div>
 
                                                             <div class="mb-3">
@@ -946,6 +945,8 @@
 
                                                         <button type="submit" class="btn btn-primary" name="submit" id="submitVcard"
                                                             value="submit">Generate QR Code</button>
+                                                        <!-- <button type="submit" class="btn btn-primary" name="submit" id="submitVcard"
+                                                            onclick="generatevcardQRCode()">Generate QR Code</button> -->
                                                     </div>
                                             </form>
                                             <div class="col-12 col-xl-6">
@@ -960,14 +961,14 @@
                                                         aria-hidden="true" onclick="downloadQRCode(this)"
                                                         id="downloadButtonsms" title="svg">svg</i>
                                                 </div>
-                                                <div class="VCard" id="qrVCard">
+                                                <div class="qrVCard" id="qrVCard">
                                                   <!-- Container for displaying the QR code -->
                                                   <div id="qrcodeVcard">
                                                        <!-- <img id="logoVCard" src="favi.png" alt="Logo"> -->
                                                   </div>
 
                                                   <!-- Additional information below the QR code -->
-                                                  <p id="nameLabelVCard"> WebNX</p>
+                                                  <p id="nameLabelVCard"> CodeRunner</p>
                                               </div>
                                             </div>
 
@@ -988,7 +989,7 @@
                                         document.write(new Date().getFullYear());
                                     </script>
                                     , made with ❤️ by
-                                    <a href="https://www.webnx.in" target="_blank" class="footer-link fw-medium">WebNX</a>
+                                    <a href="https://www.CodeRunner.in" target="_blank" class="footer-link fw-medium">CodeRunner</a>
                                 </div>
 
                         </footer>

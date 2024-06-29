@@ -196,12 +196,12 @@ function downloadQRCodecallImage(e) {
 //  for generating url QR Code *******************************************************************
 
 function generateQRCodeurl() {
-  console.log(isQRCodeGenerated);
   if (isQRCodeGenerated) {
     // Clear the existing QR code
     document.getElementById("qr-codeurl").innerHTML = '';
   }
     var url = document.getElementById('url').value;
+    console.log(url);
     var color = document.getElementById('colorurl').value;
     var background = document.getElementById('backgroundurl').value;
 
@@ -242,7 +242,7 @@ function generateQRCodeurl() {
     document.getElementById('downloadButtonurl').disabled = false;
 
     isQRCodeGenerated = true;
-    console.log(isQRCodeGenerated);
+    // console.log(isQRCodeGenerated);
 }
 
 // download QR Code for URL***************
@@ -251,6 +251,8 @@ function downloadQRCodeurl(e) {
   console.log(e.title);
   var title = e.title;
   var qrCodeCard = document.getElementById("qr-containerurl");
+  console.log("Hello");
+  console.log(qrCodeCard);
 
   switch(title){
     case "jpg":
@@ -425,10 +427,11 @@ function generatevcardQRCode() {
                       qrcodeSMSElement.appendChild(logo);
                   }
 
-                  document.getElementById('qrcodeVcard').style.backgroundColor = backgroundColorVcard;
+                  // document.getElementById('qrcodeVcard').style.backgroundColor = backgroundColorVcard;
                   document.getElementById('nameLabelVCard').style.color = qrCodeColorVcard;
 
                   document.querySelector("#qrVCard").style.display = "block";
+                  document.getElementById('downloadButtonsms').disabled = false;
                   isQRCodeGenerated =true;
               } else {
                   alert(responseObj.content);
@@ -444,7 +447,72 @@ function generatevcardQRCode() {
 
 }
 
-//QR download  vcard ***************************************************************
+
+// function generatevcardQRCode() {
+//   if (isQRCodeGenerated) {
+//     // Clear the existing QR code
+//     document.getElementById("qrcodeVcard").innerHTML = '';
+//   }
+
+//   var firstName = document.getElementById("firstName");
+//   var lastName = document.getElementById("lastName").value;
+//   var email = document.getElementById("email").value;
+//   var mobile = document.getElementById("phone").value;
+//   var companyName = document.getElementById("companyName").value;
+//   var designation = document.getElementById("designation").value;
+//   var website = document.getElementById("website").value;
+//   var address = document.getElementById("address").value;
+//   var qrCodeColorVcard = document.getElementById("qrCodeColorVcard").value;
+//   var backgroundColorVcard = document.getElementById("backgroundColorVcard").value;
+
+//   var vCardString =
+//     "BEGIN:VCARD\n" +
+//     "VERSION:3.0\n" +
+//     "N:" + lastName + ";" + firstName + ";;;\n" +
+//     "FN:" + firstName + " " + lastName + "\n" +
+//     "EMAIL:" + email + "\n" +
+//     "TEL;TYPE=CELL:" + mobile + "\n" +
+//     "ORG:" + companyName + "\n" +
+//     "TITLE:" + designation + "\n" +
+//     "URL:" + website + "\n" +
+//     "ADR;TYPE=HOME:;;" + address + ";;;;\n" +
+//     "END:VCARD";
+
+//   var qr = new QRCode(document.getElementById('qrcodeVcard'), {
+//     text: vCardString,
+//     width: 300,
+//     height: 300,
+//     colorDark: qrCodeColorVcard,
+//     colorLight: backgroundColorVcard,
+//     scale: 4
+//   });
+
+//   var fileInput = document.getElementById('fileVCard');
+//   var file = fileInput.files[0];
+
+//   if (file) {
+//     var logo = document.createElement('img');
+//     logo.id = 'logoVCard';
+//     logo.alt = 'logo';
+//     logo.accept = 'image/*';
+//     logo.style.height = '50px';
+//     logo.style.background = 'white';
+//     logo.style.width = '50px';
+//     logo.style.borderRadius = '50%';
+
+//     var objectURL = URL.createObjectURL(file);
+//     logo.src = objectURL;
+
+//     var qrcodeSMSElement = document.getElementById('qrcodeVcard');
+//     qrcodeSMSElement.appendChild(logo);
+//   }
+
+//   document.getElementById('qrcodeVcard').style.backgroundColor = backgroundColorVcard;
+//   document.getElementById('nameLabelVCard').style.color = qrCodeColorVcard;
+
+//   document.querySelector("#qrVCard").style.display = "block";
+//   isQRCodeGenerated = true;
+// }
 
 function downloadQRCode(e) {
   console.log(e.title);
